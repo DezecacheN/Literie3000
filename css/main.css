@@ -1,0 +1,46 @@
+
+.nav-link{
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #c6c6c6;
+    padding: 0 1.5rem;
+    text-shadow: 1px 1px #000000;
+  }
+
+  header {
+    display: flex;
+    padding: 2rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(37, 37, 151);
+}
+  
+  header img {
+    height: 6rem;
+  }
+  header nav ul li {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #c6c6c6;
+    padding: 0 1.5rem;
+  }
+  
+
+.page {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.homeChoice {
+    position: relative;
+    width: 18vw;
+    margin-bottom: 2rem;
+    justify-content: center;
+    font-size: 200%;
+}
