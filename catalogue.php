@@ -4,19 +4,26 @@ include("templates/header.php")
 
 <section class="page">
 
-<div class="container">
-        <div class="movies flex-container">
+
             <?php
             foreach ($matelas as $matela) {
 
-                // rappel : faire les images (plus tard)!
             ?>
-                <div class="movie">
 
-                    <div class="movie-details">
-                        <h3>
+                    <!-- <div class="flex-container"> -->
+                    <div class="encart">
+                        
+                    
+                    
+                        <div class="matelas-image">
+                            <img class="catalogueIMG" src="./img/matelas/<?= $matela["picture"] ?>" alt="">
+                        </div>
+
+                    
+                        <div class="matelasDetails">
+                        <h1 class="titre">
                             <?= $matela["name"] ?>
-                        </h3>
+                        </h1>
                             <?php
 
                             
@@ -29,7 +36,7 @@ include("templates/header.php")
                                     }
 
                                     ?>
-                                    <p class="movie-genre"><?= $newmarque ?></p>
+                                    <h2><?= $newmarque ?></h2>
                                     <?php
                                 }
                             }
@@ -43,7 +50,7 @@ include("templates/header.php")
                                     }
 
                                     ?>
-                                    <p class="movie-genre"><?= $newdimension ?></p>
+                                    <p><?= $newdimension ?></p>
                                     <?php
                                 }
                             }
@@ -55,30 +62,34 @@ include("templates/header.php")
 
 
                             ?>
-                    </div>
-                </div>
 
 
+                            <div class="prix">
                         <?php
                             if ($matela["reduction"] > 0) {
                                 $priceDef = number_format($matela["price"] * ((100 - $matela["reduction"])/100),2);
                                 ?>
-                                <p>Pas <?= number_format($matela["price"], 2) ?>€ </p>
-                                <p> <?= $priceDef ?>€ </p>
+                                <p class="no"><?= number_format($matela["price"], 2) ?>€ </p>
+                                <p class="yes"> <?= $priceDef ?>€ </p>
                                 <?php
                             } else {
                                 ?>
-                                <p> <?= number_format($matela["price"], 2) ?>€ </p>
+                                <p class="yes"> <?= number_format($matela["price"], 2) ?>€ </p>
                                 <?php
                             }
                         ?>
-                        
+                    </div>
 
+
+                    </div>
+
+                </div>
             <?php
             }
             ?>
-        </div>
-    </div>
+
+
+
 
 </section>
 

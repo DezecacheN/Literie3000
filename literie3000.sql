@@ -10,7 +10,8 @@ CREATE TABLE matelas (
     id TINYINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     price INT NOT NULL,
-    reduction INT
+    reduction INT,
+    picture VARCHAR(255)
 );
 
 CREATE TABLE marques (
@@ -45,12 +46,12 @@ CREATE TABLE matelas_dimensions (
 -- ----------------------------------
 
 INSERT INTO matelas
-(name, price, reduction)
+(name, price, reduction, picture)
 VALUES
-('Matelas Pas touché', 759, 0),
-('Matelas Lapin', 809, 15),
-('Matelas Alejandrinho', 759, 30),
-('Matelas Papy', 1019, 50);
+('Matelas Pas touché', 759, 0, 'pastouché.jpg'),
+('Matelas Lapin', 809, 15, 'lapin.png'),
+('Matelas Alejandrinho', 759, 30, 'alej.jpg'),
+('Matelas Papy', 1019, 50, 'papy.jpg');
 
 INSERT INTO marques
 (name)

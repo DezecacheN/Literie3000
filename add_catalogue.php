@@ -36,7 +36,7 @@ if (!empty($_POST)) {
         $newFileName = md5($fileName . time()) . "." . $fileExtension;
 
         // Attention à vérifier que le dossier de destination est bien créé au préalable
-        $fileDestPath = "./img/recipes/{$newFileName}";
+        $fileDestPath = "./img/matelas/{$newFileName}";
 
         $allowedTypes = array("image/jpeg", "image/png", "image/webp");
         if (in_array($fileType, $allowedTypes)) {
@@ -52,10 +52,12 @@ if (!empty($_POST)) {
 
 
 
-        $query = $db->prepare("INSERT INTO matelas (name, price, reduction) VALUES (:name, :price, :reduction)");
+        $query = $db->prepare("INSERT INTO matelas (name, price, reduction, picture) VALUES (:name, :price, :reduction, :picture)");
         $query->bindParam(":name", $name);
         $query->bindParam(":price", $price);
         $query->bindParam(":reduction", $reduction);
+        $query->bindParam(":picture", $newFileName);
+
 
 
         $id = 0;
@@ -67,9 +69,7 @@ if (!empty($_POST)) {
                 }
             }
             $id += 1;
-            echo $id;
 
-            echo $marque;
 
 
 
@@ -92,11 +92,13 @@ if (!empty($_POST)) {
 }
 
 ?>
-<h1>Ajouter un matelas</h1>
+<h1 class="titre">Ajouter un matelas</h1>
 <!-- Lorsque l'attribut action est vide les données du formulaire sont envoyées à la même page -->
+
+
 <form action="" method="post" enctype="multipart/form-data">
     
-<div class="form-group">
+    <div class="form-group">
         <label for="inputName">Nom du matelas :</label>
         <input type="text" id="inputName" name="name" value="<?= isset($name) ? $name : "" ?>">
         <?php
@@ -139,6 +141,17 @@ if (!empty($_POST)) {
         </select>
     </div>
 
+    <div class="form-group">
+        <label for="inputPicture">Photo :</label>
+        <input type="file" id="inputPicture" name="picture">
+        <?php
+        if (isset($errors["picture"])) {
+        ?>
+            <span class="info-error"><?= $errors["picture"] ?></span>
+        <?php
+        }
+        ?>
+    </div>
 
     <div class="form-group">
         <label for="inputPrice">Prix :</label>
@@ -153,8 +166,9 @@ if (!empty($_POST)) {
 
 
 
-    <input type="submit" value="Ajouter le matelas" class="btn-marmiton">
+    <input type="submit" value="Ajouter le matelas" class="btn">
 </form>
+</div>
 
 <?php
 include("templates/footer.php");
