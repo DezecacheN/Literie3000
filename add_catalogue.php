@@ -20,6 +20,10 @@ if (!empty($_POST)) {
         $errors["name"] = "Le nom du matelas est obligatoire";
     }
 
+    if (empty($price)) {
+        $errors["price"] = "Veuillez renseigner un prix";
+    }
+
     // Gestion de l'upload de la photo de notre recette
     if (isset($_FILES["picture"]) && $_FILES["picture"]["error"] === UPLOAD_ERR_OK) {
         // Le fichier avec l'attribut name qui vaut picture existe et il n'y a pas eu d'erreur pendant l'upload
@@ -99,7 +103,7 @@ if (!empty($_POST)) {
 <form action="" method="post" enctype="multipart/form-data">
     
     <div class="form-group">
-        <label for="inputName">Nom du matelas :</label>
+        <label for="inputName">Nom du matelas* :</label>
         <input type="text" id="inputName" name="name" value="<?= isset($name) ? $name : "" ?>">
         <?php
         if (isset($errors["name"])) {
@@ -154,8 +158,15 @@ if (!empty($_POST)) {
     </div>
 
     <div class="form-group">
-        <label for="inputPrice">Prix :</label>
+        <label for="inputPrice">Prix* :</label>
         <input type="number" name="price" id="inputPrice" value="<?= isset($price) ? $price : 0 ?>">
+        <?php
+        if (isset($errors["price"])) {
+        ?>
+            <span class="info-error"><?= $errors["price"] ?></span>
+        <?php
+        }
+        ?>
     </div>
 
 
@@ -165,7 +176,7 @@ if (!empty($_POST)) {
     </div>
 
 
-
+        <p class="legende">* Champs Obligatoires</p>
     <input type="submit" value="Ajouter le matelas" class="btn">
 </form>
 </div>

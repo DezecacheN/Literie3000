@@ -8,7 +8,6 @@ if (!empty($_POST)) {
 
     $errors = [];
 
-    // Valider que le champ name est bien renseigné
     if (empty($name)) {
         $errors["name"] = "Le nom du matelas est obligatoire";
     }
@@ -17,11 +16,29 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
 
+        foreach ($matelas as $key => $matela) {
+            if ($matela["name"] == $name) {
+                $id = $matela["id"];
+            }
+        }
 
-        $query = $db->prepare("DELETE FROM matelas WHERE name = :name");
-        $query->bindParam(":name", $name);
+
+
+
+        $query = $db->prepare("DELETE FROM matelas_dimensions WHERE matela_id = :id");
+        $query->bindParam(":id", $id);
 
         if ($query->execute()) {
+            $query2 = $db->prepare("DELETE FROM matelas_marques WHERE matela_id = :id");
+            $query2->bindParam(":id", $id);
+        }
+
+        if ($query2->execute()) {
+            $query3 = $db->prepare("DELETE FROM matelas WHERE id = :id");
+            $query3->bindParam(":id", $id);
+        }
+
+        if ($query3->execute()) {
             header("Location: index.php");
         }
     }

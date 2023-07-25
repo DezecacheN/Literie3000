@@ -31,9 +31,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgb(37, 37, 151);
+    background-color: rgba(20,66,132,255);
 }
   
+nav {
+    position: absolute;
+    right: 10%;
+  }
+
   header img {
     height: 6rem;
   }
@@ -91,7 +96,7 @@ body {
 .homeSection2{
     width: 100%;    
     text-align: center;
-    background-color: rgb(76, 79, 85);
+    background-color: rgba(20,66,132,255);
 
     padding: 10vh 0;
 }
@@ -103,14 +108,7 @@ body {
 
 }
 
-/* .background {
-    position:absolute;
-    background-image: linear-gradient(#24232252, rgb(148, 153, 214)), url("../img/wallpaper.jpg");
-    background-size: auto 100%;
-    background-position: center;
-      min-height: 150vh;
-      min-width: 100vw;    
-} */
+
 
 /* -------------------------------------------------------------------------- */
 /* Ajout catalogue */
@@ -157,7 +155,7 @@ body {
 
   .btn {
     font-size: 1.8rem;
-    background-color: #332c4b;
+    background-color: rgba(20,66,132,255);
     color: white;
     padding: 1rem 2rem;
     margin: 1rem auto;
@@ -166,6 +164,14 @@ body {
     border-radius: 2rem;
   }
   
+  .info-error {
+    color:red;
+  }
+
+  .legende {
+    text-align: right;
+    padding-right: 1vw;
+  }
 
   /* ------------------------------------------------------- */
   /* catalogue */
@@ -224,4 +230,5 @@ body {
     margin-top: 7vh;
     border: 2px solid black;
     border-radius: 15px;
+    background-color: whitesmoke;
 }

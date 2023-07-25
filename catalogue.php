@@ -10,7 +10,6 @@ include("templates/header.php")
 
             ?>
 
-                    <!-- <div class="flex-container"> -->
                     <div class="encart">
                         
                     
