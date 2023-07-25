@@ -69,6 +69,9 @@ if (!empty($_POST)) {
             $id += 1;
             echo $id;
 
+            echo $marque;
+
+
 
 
             $query2 = $db->prepare("INSERT INTO matelas_marques (matela_id, marque_id) VALUES (:matela_id, :marque_id)");
@@ -78,7 +81,7 @@ if (!empty($_POST)) {
 
         if ($query2->execute()) {
 
-            $query3 = $db->prepare("INSERT INTO matelas_marques (matela_id, dimension_id) VALUES (:matela_id, :dimension_id)");
+            $query3 = $db->prepare("INSERT INTO matelas_dimensions (matela_id, dimension_id) VALUES (:matela_id, :dimension_id)");
             $query3->bindParam(":matela_id", $id);
             $query3->bindParam(":dimension_id", $dimension);        }
 
@@ -108,28 +111,32 @@ if (!empty($_POST)) {
 <!-- !!!!!!!!!!!!!!!!!!! -->
 <!-- faire la photo, voir dans le marmitton -->
 
-<div class="form-group">
-        <label for="inputMarque">Marque :</label>
-        <input type="number" id="inputMarque" name="marque" value="<?= isset($marque) ? $marque : "" ?>">
-        <?php
-        if (isset($errors["marque"])) {
-        ?>
-            <span class="info-error"><?= $errors["marque"] ?></span>
-        <?php
-        }
-        ?>
+
+
+    <div class="form-group">
+        <label for="selectMarque">Marque :</label>
+        <select name="marque" id="selectMarque">
+            <?php
+                foreach ($marques as $marque) {
+                    ?>
+                        <option value="<?= $marque["id"] ?>" <?= isset($marque) && $marque === "" ? "selected" : "" ?>> <?= $marque["name"] ?></option>
+                    <?php
+                }
+            ?>
+        </select>
     </div>
 
     <div class="form-group">
-        <label for="inputDimension">Dimensions :</label>
-        <input type="number" id="inputDimension" name="dimension" value="<?= isset($dimension) ? $dimension : "" ?>">
-        <?php
-        if (isset($errors["dimension"])) {
-        ?>
-            <span class="info-error"><?= $errors["dimension"] ?></span>
-        <?php
-        }
-        ?>
+        <label for="selectDimension">Dimensions :</label>
+        <select name="dimension" id="selectDimension">
+            <?php
+                foreach ($dimensions as $dimension) {
+                    ?>
+                        <option value="<?= $dimension["id"] ?>" <?= isset($dimension) && $dimension === "" ? "selected" : "" ?>> <?= $dimension["dimension"] ?></option>
+                    <?php
+                }
+            ?>
+        </select>
     </div>
 
 
