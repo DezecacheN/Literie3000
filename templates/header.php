@@ -24,3 +24,30 @@
         </nav>
 
     </header>
+
+
+
+
+
+<!-- récupération bases de données -->
+<?php
+
+$dsn = "mysql:host=localhost;dbname=literie3000";
+$db = new PDO($dsn, "root", "");
+
+
+// récupérer les recettes de la table matelas
+$query = $db->query("select * from matelas");
+$matelas = $query->fetchAll(PDO::FETCH_ASSOC);
+// récupérer les recettes de la table marques
+$query = $db->query("select * from marques");
+$marques = $query->fetchAll(PDO::FETCH_ASSOC);
+// récupérer les recettes de la table matelas_marques
+$query = $db->query("select * from matelas_marques");
+$matelas_marques = $query->fetchAll(PDO::FETCH_ASSOC);
+// récupérer les recettes de la table dimensions
+$query = $db->query("select * from dimensions");
+$dimensions = $query->fetchAll(PDO::FETCH_ASSOC);
+// récupérer les recettes de la table matelas_dimensions
+$query = $db->query("select * from matelas_dimensions");
+$matelas_dimensions = $query->fetchAll(PDO::FETCH_ASSOC);
