@@ -2,6 +2,9 @@
 include("templates/header.php");
 
 
+// -----------------------------------------------------------------------------------------
+// Gestion du formulaire de suppression
+
 if (!empty($_POST)) {
     $name = trim(strip_tags($_POST["name"]));
 
@@ -44,7 +47,8 @@ if (!empty($_POST)) {
     }
 }
 
-
+// -----------------------------------------------------------------------------------------
+// Code de la page
 ?>
 
 
@@ -66,7 +70,7 @@ if (!empty($_POST)) {
 
 
 <section class="homeSection2">
-    <h1 class="titre">Gérer le catalogue :</h1>
+    <h1 class="titre blanc">Gérer le catalogue :</h1>
 
 <section class="homeSection2Display">
 
