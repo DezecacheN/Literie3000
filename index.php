@@ -12,7 +12,7 @@ include("templates/header.php")
 
     <div class="homeChoice">
         <h2>
-            <a href="catalogue.php"> Modifier le catalogue </a>
+            <a href="add_catalogue.php"> Ajouter au catalogue </a>
         </h2>
     </div>
 
